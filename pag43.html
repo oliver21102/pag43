@@ -97,6 +97,7 @@ z-index: 3;
 cursor: pointer;
 }
 
+
 </style>
 </head>
 <body onload="inicio()"  onresize="ajustar()">
@@ -140,6 +141,9 @@ cursor: pointer;
 
 
 <img src="imagenes/verificar.png" id="verificar">
+
+<a href="dos.html"> <img src="imagenes/flecha.png" id="flecha"> </a>
+<!--<a href="dos.html"> <img src="imagenes/flecha.png" id="flechaA"> </a>-->
 
 
 <script type="text/javascript">
@@ -232,7 +236,6 @@ function mostrarbtnVerificar(){
  }
 
 $("#verificar").on("click",verif);
-
 function verif(event){
  var con=0; var dim=document.getElementsByTagName("input").length;
  var num1=sacarRespuesta("txt1a");
@@ -260,22 +263,22 @@ var den2=sacarRespuesta("txt2b");
     borrar("txt2b");
     }
 
-
-/**
-     if(con==dim){
-    mostrarFlechaSiguiente();
-    sonidoBien();
-    }else{
-  sonidoMal();
+    if(r1&&r2){
+      mostrarFlechaSiguiente();
+      ocultarbtnVerificar();
     }
 
-ocultarbtnVerificar();  */
+ 
 }
+
 
 
 function borrar(ob){
   $("#"+ob).val("");
 }
+
+
+
 
 function verificarRespuesta1(a,b){
    if(a==respuestas[0][0] && b==respuestas[0][1]){
@@ -323,6 +326,8 @@ function sonidoMal(){
   s.src="../sonidos/mal.mp3";
   s.play();
 }
+
+
 
 
 </script>
