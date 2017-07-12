@@ -314,7 +314,8 @@ function mostrarbtnVerificar(){
 
 $("#verificar").on("click",verif);
 function verif(event){
- var con=0; var dim=document.getElementsByTagName("input").length;
+ var con=0; 
+ var dim=document.getElementsByTagName("input").length;
  var num1=sacarRespuesta("txt1a");
  var den1=sacarRespuesta("txt1b");
  var num2=sacarRespuesta("txt2a");
@@ -388,6 +389,7 @@ function setFocus(e){
   pintarBlanco(e.target.id);
  var pos=cajas.indexOf(""+e.target.id);
  puntero=pos;
+ pp=0;
 }
 
 function pintarBlanco(obId){
