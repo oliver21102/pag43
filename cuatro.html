@@ -9,16 +9,12 @@
  
 
 <style type="text/css">
- 
-
-
  .contenido{
 position: absolute;
 z-index: 3;
 width:40%;
 height:40%;
  
-
  background-color: aqua;
 background: #fff;
 
@@ -51,13 +47,22 @@ input[type=text], select {
 #cuadro1 {
   border-radius: 5px;
   position:  absolute;
-  left: 59%;
+  left: 50%;
   top: 40%;
   width: 15%;
   height: 15%;
   z-index: 3;
 }
 
+ #cuadro2{
+   border-radius: 5px;
+  position:  absolute;
+  left: 79%;
+  top: 40%;
+  width: 15%;
+  height: 15%;
+  z-index: 3;
+ }
 
 
 
@@ -90,6 +95,24 @@ height: 100%;
   cursor: pointer;
 }
 
+#simplificar{
+  position: absolute;
+  left: 77%;
+  top: 30%;
+  width: 20%;
+  height: 10%;
+  z-index: 3;
+}
+
+#flechaEq{
+  position: absolute;
+  left: 67%;
+  top: 43%;
+  width: 10%;
+  height: 10%;
+  z-index: 3;
+}
+
 
 </style>
 </head>
@@ -98,34 +121,36 @@ height: 100%;
 <img src="imagenes/fondo.jpg" id="fondo">
 
 <div id="contenido1" class="contenido">
- <img src="imagenes/1.png" id="ima1"  class="imagenes" >
- <img src="imagenes/2.png" id="ima2"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/3.png" id="ima3"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/4.png" id="ima4"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/5.png" id="ima5"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/6.png" id="ima6"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/7.png" id="ima7"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/8.png" id="ima8"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/9.png" id="ima9"  class="imagenes" style="visibility:hidden;" >
+ <img src="imagenes/3.png" id="ima1"  class="imagenes" >
 
 </div>
 
+<div id="simplificar">Simplificando</div>
 
+<img src="imagenes/igual.png" id="flechaEq">
 
 <div id="cuadro1">
-    <input type="text" id="txt1a" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="1">
+    <input type="text" id="txt1a" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="2">
     <img src="imagenes/barra.png" class="barra">
-    <input type="text" id="txt1b" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="1">
+    <input type="text" id="txt1b" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="2">
+</div>
+
+<div id="cuadro2">
+    <input type="text" id="txt2a" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="1">
+    <img src="imagenes/barra.png" class="barra">
+    <input type="text" id="txt2b" name="" placeholder="" onkeypress="soloNumero(this)" maxlength="1">
 </div>
 
 <img src="imagenes/verificar.png" id="verificar">
 
- <img src="imagenes/flecha.png" id="flecha"> 
-  <img src="imagenes/flechaA.png" id="flechaAtras" style="visibility: hidden;">  
+  <a href="cinco.html"> <img src="imagenes/flecha.png" id="flecha"> </a>
+  <a href="tres.html"><img src="imagenes/flechaA.png" id="flechaAtras" > </a> 
 
 <script type="text/javascript">
 
-$("#flecha").on("click",fflecha);
+
+
+
 
 var puntero;
 var punteroI;
@@ -135,89 +160,24 @@ var blanco="#ffffff";
 var negro="#000000";
 var respuestas= new Array();
 var res1=new Array();
-var res2=new Array();
-var res3=new Array();
-var res4=new Array();
-var res5=new Array();
-var res6=new Array();
-var res7=new Array();
-var res8=new Array();
-var res9=new Array();
- 
+
+
+res1.push(8);
+res1.push(12);
 
 res1.push(2);
 res1.push(3);
 
-res2.push(4);
-res2.push(8);
-
-res3.push(10);
-res3.push(15);
-
-res4.push(8);
-res4.push(12);
-
-res5.push(4);
-res5.push(6);
-
-res6.push(2);
-res6.push(4);
-
-res7.push(6);
-res7.push(8);
-
-res8.push(1);
-res8.push(9);
-
-res9.push(1);
-res9.push(9);
-
-
 punteroI=0;
-respuestas.push(res1);
-respuestas.push(res2);
-respuestas.push(res3);
-respuestas.push(res4);
-respuestas.push(res5);
-respuestas.push(res6);
-respuestas.push(res7);
-respuestas.push(res8);
-respuestas.push(res9);
+ 
 
-
-var MaxCaracteres=1;
+var MaxCaracteres=2;
 var cajas= new Array();
 cajas.push("txt1a");
 cajas.push("txt1b");
-
-
-function fflecha(event){
-  punteroI++;
-  if(punteroI==respuestas.length){
-     punteroI=0;
-  }
-
-  if(punteroI>1&&punteroI<4){
-    MaxCaracteres=2;
-    $("#txt1a").attr("maxlength",2);
-    $("#txt1b").attr("maxlength",2);
-    console.log("paso 2");
-  }else{
-    MaxCaracteres=1;
-    $("#txt1a").attr("maxlength",1);
-    $("#txt1b").attr("maxlength",1);
-  }
-
-cambiarImagen(punteroI);
-reiniciarCajas();
-cambiarColorTexto("txt1a",negro);
-cambiarColorTexto("txt1b",negro);
-mostrarbtnVerificar();
-$("#flecha").css("visibility","hidden");
-$("#flechaAtras").css("visibility","visible");
-
-}
-
+cajas.push("txt2a");
+cajas.push("txt2b");
+ 
 function reiniciarCajas(){
 pintarBlanco("txt1a");
 pintarBlanco("txt1b");
@@ -225,7 +185,6 @@ habilitarCaja("txt1a");
 habilitarCaja("txt1b");
 $("#txt1a").val("");
 $("#txt1b").val("");
-
 }
 
 
@@ -262,63 +221,71 @@ $("#"+cajas[puntero]).focus();
 }
 
 
+
+
 function ajustar(){
   var alto=$(window).height();
    var ancho=$(window).width();
    ancho=(ancho+alto)/2;
    var tamanio= ancho/45;
   $("input").css("fontSize",(tamanio*2.6)+"px");
+  $("#simplificar").css("fontSize",(tamanio*1.6)+"px");
 }
+
 
 function colocarCuadro(){
-$("#contenido1").css("left","10%");
+$("#contenido1").css("left","5%");
 $("#contenido1").css("top","25%");
+
 }
 
 
-
+var pp=0;
 function soloNumero(ob){
   var ingreso=false;
   var caracter=event.keyCode;
   var letra= String.fromCharCode(caracter);
  // var can=$(ob).val();
- $(ob).val("");
+ //$(ob).val("");
+ if(pp==0){
+  $(ob).val("");
+ }
+  pp++;
+
 
  if (caracter >=48 && caracter<=57){ 
- 
+    if(pp==MaxCaracteres){ 
+ puntero++; 
+ pasarSiguienteFoco(puntero);
+ pp=0;
+  }
 
-   puntero++; 
+
+
    if(puntero>cajas.length-1){
     puntero=0;
   }
 
 
-//console.log(MaxCaracteres+"  "+can.length);
-  /*if(MaxCaracteres==can.length){
-    pasarSiguienteFoco(puntero);
-  }
-  */
 
-
-  pasarSiguienteFoco(puntero);
-  
- 
  }else{
   return event.returnValue = false;
  }
 
-/*
-  if(todosLlenos()){
-    mostrarbtnVerificar();
-   } */
-  // console.log("pasoooo");
+
 return ;
 }
 
 
 function pasarSiguienteFoco(p)
 { 
-   $("#"+cajas[p]).focus();
+  if($("#"+cajas[p]).attr("id")=="txt2a"||$("#"+cajas[p]).attr("id")=="txt2b"){
+   MaxCaracteres=1;
+  }else{
+MaxCaracteres=2;
+  }
+ 
+  $("#"+cajas[p]).focus();
 }
 
 
@@ -350,27 +317,48 @@ function verif(event){
  var con=0; var dim=document.getElementsByTagName("input").length;
  var num1=sacarRespuesta("txt1a");
  var den1=sacarRespuesta("txt1b");
+ var num2=sacarRespuesta("txt2a");
+ var den2=sacarRespuesta("txt2b");
 
-    var r1=numeradorCorrecto(num1,respuestas[punteroI]);
-    var r2=denominadorCorrecto(den1,respuestas[punteroI]);
+    var r1=numeradorCorrecto(num1,res1[0]);
+    var r2=denominadorCorrecto(den1,res1[1]);
+    var r3=numeradorCorrecto(num2,res1[2]);
+    var r4=denominadorCorrecto(den2,res1[3]);
+
 
    if(r1){
       deshabilitarInput("txt1a");
-      
    }else{
     pintarCaja("txt1a",rojo);
    }
+
    if(r2){
    deshabilitarInput("txt1b");
-
    }else{
   pintarCaja("txt1b",rojo);
    }
-    if(r1&&r2){
+
+    if(r3){
+   deshabilitarInput("txt2a");
+   }else{
+  pintarCaja("txt2a",rojo);
+   }
+
+   if(r4){
+   deshabilitarInput("txt2b");
+   }else{
+  pintarCaja("txt2b",rojo);
+   }
+
+
+
+    if(r1&&r2&&r3&&r4){
       mostrarFlechaSiguiente();
       ocultarbtnVerificar();
       pintarCaja("txt1a",blanco);  
       pintarCaja("txt1b",blanco);
+      pintarCaja("txt2a",blanco);
+      pintarCaja("txt2b",blanco);
      pintar(verde);
      sonidoBien();
     }
@@ -385,6 +373,8 @@ function pintarCaja(id,color){
 function pintar(color){
  $("#txt1a").css("backgroundColor",""+color);
  $("#txt1b").css("backgroundColor",""+color);
+ $("#txt2a").css("backgroundColor",""+color);
+ $("#txt2b").css("backgroundColor",""+color);
 }
 
 function cambiarColorTexto(Idcaja,color){
@@ -414,11 +404,11 @@ function borrar(ob){
 
  
 function numeradorCorrecto(a,ar){
-  return a==ar[0];
+  return a==ar;
 }
 
 function denominadorCorrecto(b,ar){
-  return b==ar[1];
+  return b==ar;
 }
 
 
