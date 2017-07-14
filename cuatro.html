@@ -12,11 +12,13 @@
  .contenido{
 position: absolute;
 z-index: 3;
-width:40%;
-height:40%;
- 
+width:42%;
+height:43%;
+opacity: 0.5; 
+
  background-color: aqua;
 background: #fff;
+ 
 
 -moz-border-radius: 15px 15px 15px 15px;
 -webkit-border-radius: 15px 15px 15px 15px;
@@ -38,11 +40,25 @@ input[type=text], select {
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
+}
 
+ 
+
+ #ima1{
+  position: absolute;
+
+  width:40%;
+height:40%;
+left: 6%;
+top: 26%;
+z-index: 4;
+  -moz-transform: rotate(0.5deg);
+     -o-transform: rotate(0.5deg);
+     -webkit-transform: rotate(0.5deg);
+     transform: rotate(0.5deg);
 }
  
 
- 
 
 #cuadro1 {
   border-radius: 5px;
@@ -115,16 +131,15 @@ height: 100%;
 
 
 </style>
+
 </head>
 <body onload="inicio()"  onresize="ajustar()" class="noseleccionable">
 
 <img src="imagenes/fondo.jpg" id="fondo">
 
 <div id="contenido1" class="contenido">
- <img src="imagenes/3.png" id="ima1"  class="imagenes" >
-
 </div>
-
+ <img src="imagenes/4.png" id="ima1"  class="imagenes" >
 <div id="simplificar">Simplificando</div>
 
 <img src="imagenes/igual.png" id="flechaEq">
@@ -147,10 +162,6 @@ height: 100%;
   <a href="tres.html"><img src="imagenes/flechaA.png" id="flechaAtras" > </a> 
 
 <script type="text/javascript">
-
-
-
-
 
 var puntero;
 var punteroI;

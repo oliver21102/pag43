@@ -15,12 +15,13 @@
  .contenido{
 position: absolute;
 z-index: 3;
-width:40%;
-height:40%;
- 
+width:42%;
+height:43%;
+opacity: 0.5; 
 
  background-color: aqua;
 background: #fff;
+ 
 
 -moz-border-radius: 15px 15px 15px 15px;
 -webkit-border-radius: 15px 15px 15px 15px;
@@ -43,6 +44,18 @@ input[type=text], select {
     box-sizing: border-box;
     text-align: center;
 
+}
+
+#ima1{
+  position: absolute;
+
+  width:40%;
+height:40%;
+left: 11%;
+top: 26%;
+z-index: 4;
+
+ 
 }
  
 
@@ -96,19 +109,11 @@ height: 100%;
 <body onload="inicio()"  onresize="ajustar()" class="noseleccionable">
 
 <img src="imagenes/fondo.jpg" id="fondo">
-
+<img src="imagenes/1.png" id="ima1"  class="imagenes" >
 <div id="contenido1" class="contenido">
- <img src="imagenes/1.png" id="ima1"  class="imagenes" >
- <img src="imagenes/2.png" id="ima2"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/3.png" id="ima3"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/4.png" id="ima4"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/5.png" id="ima5"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/6.png" id="ima6"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/7.png" id="ima7"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/8.png" id="ima8"  class="imagenes" style="visibility:hidden;" >
- <img src="imagenes/9.png" id="ima9"  class="imagenes" style="visibility:hidden;" >
 
 </div>
+
 
 
 
@@ -120,7 +125,7 @@ height: 100%;
 
 <img src="imagenes/verificar.png" id="verificar">
 
- <img src="imagenes/flecha.png" id="flecha"> 
+ <a href="dos.html"><img src="imagenes/flecha.png" id="flecha"> </a> 
   <img src="imagenes/flechaA.png" id="flechaAtras" style="visibility: hidden;">  
 
 <script type="text/javascript">

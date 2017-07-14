@@ -1,0 +1,371 @@
+<html>
+<head>
+ 
+ <script type="text/javascript" src="../Funciones/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" src="../Funciones/jquery.min.js"></script>
+ <script type="text/javascript" src="../Funciones/jquery-ui.min.js"></script>
+ <script type="text/javascript" src="../Funciones/jquery.ui.touch-punch.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../estilos/PlantillaP.css">
+ 
+
+<style type="text/css">
+ 
+
+#verificar{
+position: absolute;
+left: 40%;
+top: 85%;
+width: 20%;
+height: 8%;
+z-index: 3;
+cursor: pointer;
+}
+ 
+
+#flecha, #flechaAtras{
+  cursor: pointer;
+}
+
+#simplificar{
+  position: absolute;
+  left: 77%;
+  top: 30%;
+  width: 20%;
+  height: 10%;
+  z-index: 3;
+}
+
+#flechaEq{
+  position: absolute;
+  left: 67%;
+  top: 43%;
+  width: 10%;
+  height: 10%;
+  z-index: 3;
+}
+
+.cuadros{
+  position: absolute;
+  width: 15%;
+  height: 15%;
+  z-index: 3;
+}
+
+.contenido{
+  position: absolute;
+  width: 80%;
+  height: 20%;
+  left: 10%;
+  top: 20%;
+  z-index: 3;
+ 
+}
+.fracciones{
+  position: absolute;
+  width: 15%;
+  height: 10%;
+ 
+  z-index: 3;
+ 
+}
+.espacio, .numeros{
+  position: absolute;
+  width: 15%;
+  height: 8%;
+ 
+  z-index: 3;
+}
+.imagenes{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+.im{
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  z-index: 3;
+  
+}
+.numeros{
+  cursor: pointer;
+}
+
+
+
+
+</style>
+</head>
+<body onload="inicio()"  onresize="ajustar()" class="noseleccionable">
+
+<img src="imagenes/fondo2.jpg" id="fondo">
+<div class="contenido">
+  <div class="im"><img src="imagenes/gra1.png" class="imagenes"> </div>
+  <div class="im"><img src="imagenes/gra2.png" class="imagenes"> </div>
+  <div class="im"><img src="imagenes/gra3.png" class="imagenes"> </div>
+  <div class="im"><img src="imagenes/gra4.png" class="imagenes"> </div>
+  <div class="im"><img src="imagenes/gra5.png" class="imagenes"> </div>
+</div>
+ <div class="espacio" id="n1"><img src="imagenes/blanco.png" class="imagenes"></div>
+ <div class="espacio" id="n2"><img src="imagenes/blanco.png" class="imagenes"></div>
+ <div class="espacio" id="n3"><img src="imagenes/blanco.png" class="imagenes"></div>
+ <div class="espacio" id="n4"><img src="imagenes/blanco.png" class="imagenes"></div>
+ <div class="espacio" id="n5"><img src="imagenes/blanco.png" class="imagenes"></div>
+ 
+
+
+  <div class="numeros" id="a1"> <img src="imagenes/e1.png" class="imagenes"> </div>
+  <div class="numeros" id="a2"> <img src="imagenes/e2.png" class="imagenes"> </div>
+  <div class="numeros" id="a3"> <img src="imagenes/e3.png" class="imagenes"> </div>
+  <div class="numeros" id="a4"> <img src="imagenes/e4.png" class="imagenes"> </div>
+  <div class="numeros" id="a5"> <img src="imagenes/e5.png" class="imagenes"> </div>
+
+
+ 
+
+  <a href="seis.html"> <img src="imagenes/flecha.png" id="flecha"> </a>
+  <a href="cuatro.html"><img src="imagenes/flechaA.png" id="flechaAtras" > </a> 
+
+<script type="text/javascript">
+
+
+var puntero;
+var punteroI;
+var rojo="#F21313";
+var verde="#14A809";
+var blanco="#ffffff";
+var negro="#000000";
+var respuestas= new Array();
+var res1=new Array();
+
+
+res1.push(10);
+res1.push(15);
+
+res1.push(2);
+res1.push(3);
+
+punteroI=0;
+ 
+
+ 
+
+function acomodarFracciones(ar,al,an){
+var gra=document.getElementsByClassName(ar);
+var alt=al;var ancho=an;
+ 
+for(var i=0; i<gra.length; i++){
+  gra[i].style.left=ancho+"%";
+   gra[i].style.top=alt+"%";
+  ancho+=16;
+ }
+
+}
+
+function acomodarGraficos(ar){
+var gra=document.getElementsByClassName(ar);
+var alt=0;var ancho=0;
+ 
+for(var i=0; i<gra.length; i++){
+  gra[i].style.left=ancho+"%";
+  //gra[i].style.top=ancho+"%";
+  ancho+=20;
+ }
+
+}
+
+
+
+
+
+function inicio(){
+ajustar();
+colocarCuadro();
+acomodarGraficos("im");
+acomodarFracciones("espacio",42,10);
+acomodarFracciones("numeros",72,10);
+
+     $(init);
+ 
+
+}
+
+
+
+function ajustar(){
+  var alto=$(window).height();
+   var ancho=$(window).width();
+   ancho=(ancho+alto)/2;
+   var tamanio= ancho/45;
+  $("input").css("fontSize",(tamanio*2.6)+"px");
+  $("#simplificar").css("fontSize",(tamanio*1.6)+"px");
+}
+
+
+
+function colocarCuadro(){
+$("#contenido1").css("left","5%");
+$("#contenido1").css("top","25%");
+
+}
+
+
+
+
+
+
+
+ 
+
+
+
+function  deshabilitarInput(obid){  
+$("#"+obid).attr('disabled','disabled');
+}
+
+
+function sacarRespuesta(obID){
+  return $("#"+obID).val();
+}
+function mostrarFlechaSiguiente(){
+ $("#flecha").css("visibility","visible");
+}
+
+
+function sonidoBien(){
+  var s=document.createElement("audio");
+  s.src="../sonidos/bien.mp3";
+  s.play();
+}
+
+
+function sonidoMal(){
+  var s=document.createElement("audio");
+  s.src="../sonidos/mal.mp3";
+  s.play();
+}
+
+
+
+
+
+////////////////////////
+
+var cantidad=0;
+var dimension=document.getElementsByClassName("espacio").length;
+ 
+ function desordenar(ar,ar2){
+
+ var clasee= document.getElementsByClassName(ar);
+ var esp2= document.getElementsByClassName(ar2);
+ 
+ var posiciones=new Array();
+ var posiciones2=new Array();
+ var numerosD=ran(clasee.length);
+for( var i=0; i<clasee.length; i++){
+ 
+ posiciones.push({lf:clasee[i].style.left,tp:clasee[i].style.top});
+ posiciones2.push({lf:esp2[i].style.left,tp:esp2[i].style.top});
+}
+
+for( var ii=0; ii<clasee.length; ii++){
+   clasee[ii].style.left=posiciones[numerosD[ii]-1].lf;
+  clasee[ii].style.top=posiciones[numerosD[ii]-1].tp;
+  esp2[ii].style.left=posiciones2[numerosD[ii]-1].lf;
+}
+
+}
+
+
+ 
+function ran(num){
+      var numeros=[];
+      for (var i=1; i<num+1; i++)
+      {
+        numeros.push(i);
+      }
+
+      for (var  j=0; j<num; j++)
+      {
+        var tmp = numeros[j];
+        var k = Math.floor(Math.random() * numeros.length);
+        numeros[j] = numeros[k];
+        numeros[k] = tmp;
+      }
+      return numeros;
+    }
+
+
+    function arrastrar(event,ui){
+ var elemento=event.target.id;
+ document.getElementById(elemento).style.zIndex=200;
+}
+
+
+function soltar(event,ui){
+   var elemento=event.target.id;
+ document.getElementById(ui.draggable.attr('id')).style.left=document.getElementById(elemento).style.left;
+ document.getElementById(ui.draggable.attr('id')).style.top=document.getElementById(elemento).style.top;
+ 
+  document.getElementById(ui.draggable.attr('id')).style.width=document.getElementById(elemento).style.width;
+  document.getElementById(ui.draggable.attr('id')).style.height=document.getElementById(elemento).style.height;
+  //document.getElementById(ui.draggable.attr('id')).style.zIndex=1;
+ ui.draggable.draggable('option','revert',false);
+ ui.draggable.draggable('option','disabled',true);
+
+ $("#"+ui.draggable.attr("id")).css("cursor","default");
+
+    cantidad++;  sonidoBien();;
+    console.log(cantidad+" "+dimension);
+  if(cantidad==dimension){
+       mostrarSig();
+   }
+} 
+
+
+function mostrarSig(){
+  setTimeout(function(){ 
+  mostraMuybien();
+  },2000);
+}
+
+
+
+
+function mostraMuybien(){
+  window.location="fin.html";
+}
+
+
+
+
+ 
+  function init(){
+      desordenar("im","espacio");
+    $('#a1').draggable({containment: "window",revert:true,drag:arrastrar});
+    $('#a2').draggable({containment: "window",revert:true,drag:arrastrar});
+    $('#a3').draggable({containment: "window",revert:true,drag:arrastrar});
+    $('#a4').draggable({containment: "window",revert:true,drag:arrastrar});
+    $('#a5').draggable({containment: "window",revert:true,drag:arrastrar});
+    
+  
+    $('#n1').droppable( {accept:"#a1",drop:soltar});
+    $('#n2').droppable( {accept:"#a2",drop:soltar});
+    $('#n3').droppable( {accept:"#a3",drop:soltar});
+    $('#n4').droppable( {accept:"#a4",drop:soltar});
+    $('#n5').droppable( {accept:"#a5",drop:soltar});
+ 
+
+ }
+
+//////////////////////
+
+</script>
+
+
+
+
+
+</body>
+</html>
